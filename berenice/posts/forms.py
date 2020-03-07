@@ -49,3 +49,18 @@ class ItemDemo():
 
     def __repr__(self):
         return f"ItemDemo('\n...{self.make}'\n\t '{self.model}' \n\t '{self.year}')"
+
+
+class PostDemo():
+    ''' create post obj for demo purpose no db backup for these items '''
+    date_posted = datetime.utcnow().date()
+    user_id = '00'
+    author = 'attila'
+
+    def __init__(self, title='demo title', content='demo content'):
+        self.title = title
+        self.content = content
+        print(self)
+
+    def __repr__(self):
+        return f"PostDemo('\n...{self.title}'\n\t '{self.content}')"

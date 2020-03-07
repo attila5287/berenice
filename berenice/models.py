@@ -14,9 +14,11 @@ class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(20), unique=True, nullable=False)
     email = db.Column(db.String(120), unique=True, nullable=False)
+    location_id = db.Column(db.String(20), nullable=False)
     image_file = db.Column(db.String(20), nullable=False, default='default.png')
     password = db.Column(db.String(60), nullable=False)
     posts = db.relationship('Post', backref='author', lazy=True)
+    loc_items = db.relationship('Item', backref='location', lazy=True)
     def __repr__(self):
         return f"User('{self.username}', '{self.email}', '{self.image_file}')"
 
@@ -32,17 +34,19 @@ class Post(db.Model):
     def __repr__(self):
         return f"Post('{self.title}', '{self.date_posted}')"
 
-
-class PostDemo():
-    ''' create post obj for demo purpose no db backup for these items ''' 
-    date_posted = datetime.utcnow().date()
-    user_id = '00'
-    author = 'attila'
-
-    def __init__(self, title='demo title', content='demo content'):
-        self.title = title
-        self.content = content
-        print(self)
+class Item(db.model):
+    pass
+    id = db.Column(db.Integer, primary_key=True)
+    make = db.Column(db.String(16), nullable=False)
+    model = db.Column(db.String(16), nullable=False)
+    year = db.Column(db.String(4), nullable=False)
+    bodyType = db.Column(db.String(8), nullable=False)
+    destId = db.Column(db.Integer, db.ForeignKey(
+        'user.location_id'), nullable=False)
+    shipStatus = db.Column(db.String(16), nullable=False)
+    date_added = db.Column(db.DateTime, nullable=False,
+                            default=datetime.utcnow)
 
     def __repr__(self):
-        return f"PostDemo('\n...{self.title}'\n\t '{self.content}')"
+        return f"Item('\n...{self.make}'\n\t '{self.model}' \n\t '{self.year}')"
+

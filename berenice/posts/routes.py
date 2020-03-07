@@ -2,8 +2,8 @@ from flask import (render_template, url_for, flash,
                    redirect, request, abort, Blueprint)
 from flask_login import current_user, login_required
 from berenice import db
-from berenice.models import Post, PostDemo
-from berenice.posts.forms import PostForm, ItemForm, ItemDemo
+from berenice.models import Post, Item 
+from berenice.posts.forms import PostForm, ItemForm, ItemDemo, PostDemo
 
 posts = Blueprint('posts', __name__)
 
