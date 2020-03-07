@@ -28,7 +28,24 @@ class ItemForm(FlaskForm):
         choices=[
             ('0', 'shipped'),
             ('1', 'waiting'),
-            ('0', 'arrived'),
+            ('2', 'arrived'),
         ]
     )
 
+
+class ItemDemo():
+    pass
+    date_posted = '07-03-2020'
+
+    def __init__(self, make='', model='', year='', bodyType='', destId='', shipStatus=''):
+        pass
+        self.make = make
+        self.model = model
+        self.year = year
+        self.bodyType = bodyType
+        self.destId =destId
+        self.shipStatus = shipStatus
+
+
+    def __repr__(self):
+        return f"ItemDemo('\n...{self.make}'\n\t '{self.model}' \n\t '{self.year}')"

@@ -3,10 +3,55 @@ from flask import (render_template, url_for, flash,
 from flask_login import current_user, login_required
 from berenice import db
 from berenice.models import Post, PostDemo
-from berenice.posts.forms import PostForm, ItemForm
+from berenice.posts.forms import PostForm, ItemForm, ItemDemo
 
 posts = Blueprint('posts', __name__)
 
+
+@posts.route("/h0me")
+def h0me():
+    page = request.args.get('page', 1, type=int)
+    inventory = Post.query.order_by(
+        Post.date_posted.desc()).paginate(page=page, per_page=5)
+    pass
+
+    try:
+        _ = [post for post in posts]
+    except:
+        posts = []
+
+    return render_template('h0me.html', inventory=inventory)
+
+
+
+@posts.context_processor
+def inject_ItemDemoList():
+    pass
+    ItemDemoList = [
+        ItemDemo(make=_make, model=_model, year=_year,
+                 bodyType=_bodyType, destId=_destId, shipStatus=_shipStatus)
+                 for (_make, _model, _year, _bodyType, _destId, _shipStatus) in
+                 zip(
+                     [
+                         'Chrysler',
+                         'Mini',
+                         'Ford',
+                         'Toyota',
+                         'Hummer',
+                     ],
+                     [
+                         '300',
+                         'Cooper',
+                         'Mustang',
+                         'TRD',
+                         'H3',
+                     ],
+                     ['2011', '2012', '2013', '2014', '2015',],
+                     ['00.png', '01.png', '02.png', '03.png', '04.png', ],
+                     ['0', '1', '2', '3', '4', ],
+                     ['0', '1', '2', '0', '1',])]
+        
+    return dict(ItemDemoList=ItemDemoList)
 
 @posts.context_processor
 def inject_PostDemoList():
@@ -31,22 +76,6 @@ def inject_PostDemoList():
 
     return dict(PostDemoList=PostDemoList)
 
-
-@posts.route("/h0me")
-def h0me():
-    page = request.args.get('page', 1, type=int)
-    inventory = Post.query.order_by(
-        Post.date_posted.desc()).paginate(page=page, per_page=5)
-    pass
-
-    try:
-        _ = [post for post in posts]
-    except:
-        posts = []
-
-    return render_template('h0me.html', inventory=inventory)
-
-
 @posts.route("/item/new", methods=['GET', 'POST'])
 @login_required
 def new_item():
@@ -60,7 +89,6 @@ def new_item():
         return redirect(url_for('posts.h0me'))
     return render_template('create_item.html', title='New Item',
                            form=form, legend='New Item')
-
 
 @posts.route("/post/new", methods=['GET', 'POST'])
 @login_required
