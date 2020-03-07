@@ -1,17 +1,24 @@
 {% extends "layout.html" %}
 {% block content %}
     
-    <div class="card-group">
+    <div class="card-group p-2">
       {% for item in ItemDemoList %}
-      <div class="card">
-        <img class="card-img-top" src="https://raw.githubusercontent.com/attila5287/berenice_img/master/itemBodyType/{{item.bodyType}}" alt="Card image cap" style="height: 12rem;">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-        </div>
-        <div class="card-footer">
-          <small class="text-muted">Last updated 3 mins ago</small>
-        </div>
+      <div class="card border-{{item.destId}} card-rounded m-1"
+      style="border-width: medium;border-radius: 12px;"
+      >
+        <img class="card-img-top" src="https://raw.githubusercontent.com/attila5287/berenice_img/master/itemBodyTyp3/{{item.bodyType}}" alt="Card image cap" style="height: 12rem;">
+          <div class="card-body">
+            <h5 class="card-title bg-{{item.destId}} text-dark float-right text-monospace"> 
+              &middot; berenice &middot;
+            </h5>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">{{item.make}}</li>
+            <li class="list-group-item">{{item.model}}</li>
+            <li class="list-group-item">{{item.year}}</li>
+            <li class="list-group-item">{{item.bodyType}}</li>
+            <li class="list-group-item">{{item.destId}}</li>
+          </ul>
       </div>
       {% endfor %}
     </div>

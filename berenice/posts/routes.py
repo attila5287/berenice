@@ -19,8 +19,8 @@ def h0me():
         _ = [post for post in posts]
     except:
         posts = []
+    return render_template('h0me.html', inventory=inventory, title='My Cars')
 
-    return render_template('h0me.html', inventory=inventory)
 
 
 
@@ -48,7 +48,7 @@ def inject_ItemDemoList():
                      ],
                      ['2011', '2012', '2013', '2014', '2015',],
                      ['00.png', '01.png', '02.png', '03.png', '04.png', ],
-                     ['0', '1', '2', '3', '4', ],
+                     ['info', 'warning', 'success', 'danger', 'fifth', ],
                      ['0', '1', '2', '0', '1',])]
         
     return dict(ItemDemoList=ItemDemoList)

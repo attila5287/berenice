@@ -45,7 +45,7 @@
 	<body>
 		<nav class="navbar navbar-expand-sm navbar-dark bg-dark fixed-top mb-1 px-2">
 			<div class="container">
-				<a class="navbar-brand" href="http://berenice.herokuapp.com">
+				<a class="navbar-brand" href="http://bereniceauto.herokuapp.com">
 					<img src="https://raw.githubusercontent.com/attila5287/berenice_img/master/lambo_green.png"
 						style="height: 3rem;">
 				</a>
@@ -66,10 +66,16 @@
 						</li>
 
 						<li class="nav-item">
-							<a class="nav-link" href="">
+							<a class="nav-link" href="/item/new">
 								<i class="fas fa-question    "></i>
 								Forms</a>
 						</li>
+													<a class="nav-link" href="/h0me">
+								<i class="fas fa-flag-checkered    "></i>
+								<i class="fas fa-car-side    "></i>
+								Demo
+								&middot;
+								My Cars!</a>
 
 						<li class="nav-item">
 							<a class="nav-link" href="/home">
@@ -81,11 +87,12 @@
 						{% else %}
 
 						<li class="nav-item">
-							<a class="nav-link" href="/profiler">
+							<a class="nav-link" href="/h0me">
 								<i class="fas fa-flag-checkered    "></i>
-								Forms
+								<i class="fas fa-car-side    "></i>
+								Demo
 								&middot;
-								Start!</a>
+								My Cars!</a>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link" href="/register">
@@ -280,8 +287,8 @@
 								Ship Car
 							</a>
 							<a class="nav-item btn btn-large btn-dark btn-rounded nav-link   border-primary pb-2 mt-2"
-								href="" data-toggle="tooltip" data-placement="right"
-								title="profiler collects user input via forms" style="border-width: medium;border-radius: 9px;">
+								href="{{ url_for('posts.h0me')  }}" data-toggle="tooltip" data-placement="right"
+								title="display cars" style="border-width: medium;border-radius: 9px;">
 								<i class="fas fa-car"></i>
 								My Cars
 							</a>
@@ -451,6 +458,12 @@
 			color: greenyellow;
 		}
 
+		.bg-fifth {
+			background-color: orchid;
+		}
+		.border-fifth {
+			border-color: orchid;
+		}
 		
 
 		</style>
