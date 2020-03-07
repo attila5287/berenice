@@ -2,10 +2,64 @@ from flask import (render_template, url_for, flash,
                    redirect, request, abort, Blueprint)
 from flask_login import current_user, login_required
 from berenice import db
-from berenice.models import Post
-from berenice.posts.forms import PostForm
+from berenice.models import Post, PostDemo
+from berenice.posts.forms import PostForm, ItemForm
 
 posts = Blueprint('posts', __name__)
+
+
+@posts.context_processor
+def inject_PostDemoList():
+    pass
+    PostDemoList = [
+        PostDemo(title=title, content=content)
+        for (title, content) in zip(
+            [
+                '01> welcome to python flask app!',
+                '02> these are demo posts',
+                '03> they only appear',
+                '04> when there are no posts to show',
+            ],
+            [
+                'A: post is a CRUD module',
+                'B: create posts or delete yours',
+                'C: read those created by others',
+                'D: update your posts or preferences',
+            ]
+        )
+    ]
+
+    return dict(PostDemoList=PostDemoList)
+
+
+@posts.route("/h0me")
+def h0me():
+    page = request.args.get('page', 1, type=int)
+    inventory = Post.query.order_by(
+        Post.date_posted.desc()).paginate(page=page, per_page=5)
+    pass
+
+    try:
+        _ = [post for post in posts]
+    except:
+        posts = []
+
+    return render_template('h0me.html', inventory=inventory)
+
+
+@posts.route("/item/new", methods=['GET', 'POST'])
+@login_required
+def new_item():
+    form = ItemForm()
+    if form.validate_on_submit():
+        post = Post(title=form.title.data,
+                    content=form.content.data, author=current_user)
+        db.session.add(post)
+        db.session.commit()
+        flash('Item added to inventory!', 'success')
+        return redirect(url_for('posts.h0me'))
+    return render_template('create_item.html', title='New Item',
+                           form=form, legend='New Item')
 
 
 @posts.route("/post/new", methods=['GET', 'POST'])
