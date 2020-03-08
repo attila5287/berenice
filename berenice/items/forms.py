@@ -13,17 +13,19 @@ class ItemForm(FlaskForm):
             ('0', 'Sedan'),('1', 'Compact'),
             ('2', 'Coupe'), ('3', 'Pickup'),
             ('4' ,'SUV')
-            ])
+            ], default='2')
 
     dest_id = SelectField(
         choices=[('0', 'Alabama'),('1', 'Baltimore'),
-                 ('2', 'California'), ('3', 'Delaware'), ('4', 'Exeter')])
+                 ('2', 'California'), ('3', 'Delaware'), ('4', 'Exeter')], default='0')
     ship_status = SelectField(
         choices=[
-            ('0', 'shipped'),
-            ('1', 'waiting'),
-            ('2', 'arrived'),
-        ]
+            ('0', 'not yet shipped'),
+            ('1', 'receive next week'),
+            ('2', 'receive following week'),
+            ('3', 'receive within a month'),
+            ('4', 'receive next month'),
+        ], default='0'
     )
 
 
@@ -31,14 +33,14 @@ class ItemDemo():
     pass
     date_posted = '07-03-2020'
 
-    def __init__(self, make='', model='', year='', bodyType='', destId='', shipStatus=''):
+    def __init__(self, make='', model='', year='', body_type='', dest_id='', ship_status=''):
         pass
         self.make = make
         self.model = model
         self.year = year
-        self.bodyType = bodyType
-        self.destId =destId
-        self.shipStatus = shipStatus
+        self.body_type = body_type
+        self.dest_id = dest_id
+        self.ship_status = ship_status
 
 
     def __repr__(self):
