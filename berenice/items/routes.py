@@ -73,8 +73,8 @@ def inject_ItemDemoList():
                 'H3',
             ],
             ['2011', '2012', '2013', '2014', '2015', ],
-            ['00.png', '01.png', '02.png', '03.png', '04.png', ],
-            ['info', 'warning', 'success', 'danger', 'fifth', ],
+            ['0', '1', '2', '3', '4', ],
+            ['0', '1', '2', '3', '4', ],
             ['0', '1', '2', '3', '4', ])]
 
     return dict(ItemDemoList=ItemDemoList)

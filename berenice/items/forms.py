@@ -31,7 +31,7 @@ class ItemForm(FlaskForm):
 
 class ItemDemo():
     pass
-    date_posted = '07-03-2020'
+    date_posted = datetime.utcnow
 
     def __init__(self, make='', model='', year='', body_type='', dest_id='', ship_status=''):
         pass
