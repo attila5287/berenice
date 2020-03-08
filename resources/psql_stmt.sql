@@ -1,3 +1,24 @@
+-- WORKS
+-- now drop the table try add again
+DROP TABLE public.user CASCADE;
+
+
+-- table exists
+CREATE TABLE "user" (
+		"id"	BIGSERIAL NOT NULL PRIMARY KEY,
+		"username"	VARCHAR(20) NOT NULL UNIQUE,
+		"email"	VARCHAR(120) NOT NULL UNIQUE,
+		"image_file"	VARCHAR(255) NOT NULL,
+		"password"	VARCHAR(255) NOT NULL,
+		"location_id"	SMALLINT
+	);
+
+
+
+-- delete all data and related records
+TRUNCATE TABLE public.user CASCADE;
+-- >> deletes posts with FK
+--     NOTICE:  truncate cascades to table "post"
 
 -- postgresql edt, need to run first in psql shell
 
