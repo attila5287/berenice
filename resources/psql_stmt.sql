@@ -1,3 +1,4 @@
+
 -- postgresql edt, need to run first in psql shell
 
 	CREATE TABLE "user" (
@@ -7,6 +8,31 @@
 		"image_file"	VARCHAR(255) NOT NULL,
 		"password"	VARCHAR(255) NOT NULL
 	);
+
+-- psql
+CREATE TABLE item (
+	id BIGSERIAL NOT NULL PRIMARY KEY, 
+	make VARCHAR(16), 
+	model VARCHAR(16), 
+	year VARCHAR(16), 
+	body_type VARCHAR(16), 
+	dest_id VARCHAR(16) , 
+	ship_status VARCHAR(16) , 
+	date_posted TIMESTAMP  
+);
+
+-- sqlite 
+CREATE TABLE "item" (
+	"id"	INTEGER NOT NULL,
+	"make"	VARCHAR(16),
+	"model"	VARCHAR(16),
+	"year"	VARCHAR(16),
+	"body_type"	VARCHAR(16),
+	"dest_id"	VARCHAR(16),
+	"ship_status"	VARCHAR(16),
+	"date_posted"	DATETIME,
+	PRIMARY KEY("id")
+)
 
 -- Query all rows and columns from a table
 SELECT * FROM
