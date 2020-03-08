@@ -23,9 +23,11 @@ def create_app(config_class=Config):
     from berenice.users.routes import users
     from berenice.posts.routes import posts
     from berenice.main.routes import main
+    from berenice.items.routes import items
     from berenice.errors.handlers import errors
     app.register_blueprint(users)
     app.register_blueprint(posts)
+    app.register_blueprint(items)
     app.register_blueprint(main)
     app.register_blueprint(errors)
 

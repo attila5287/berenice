@@ -21,6 +21,7 @@ def regist3r():
     user = User(
         username=request.form['username'],
         email=request.form['email'],
+        location_id=request.form['location_id'],
         password=hashed_password
     )
     db.session.add(user)

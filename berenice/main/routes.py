@@ -1,6 +1,6 @@
-
 from flask import render_template, request, Blueprint
-from berenice.models import Post, PostDemo
+from berenice.models import Post
+from berenice.posts.forms import PostDemo
 
 main = Blueprint('main', __name__)
 

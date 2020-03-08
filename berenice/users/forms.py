@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
 from flask_wtf.file import FileField, FileAllowed
-from wtforms import StringField, PasswordField, SubmitField, BooleanField
+from wtforms import StringField, PasswordField, SubmitField, BooleanField, SelectField
 from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
 from flask_login import current_user
 from berenice.models import User
@@ -14,7 +14,12 @@ class RegistrationForm(FlaskForm):
     password = PasswordField('Password', validators=[DataRequired()])
     confirm_password = PasswordField('Confirm Password',
                                      validators=[DataRequired(), EqualTo('password')])
+    location_id = SelectField(
+        choices=[('0', 'Alabama'),('1', 'Baltimore'),
+        ('2', 'California'), ('3', 'Delaware'), ('4', 'Exeter')]
+    )
     submit = SubmitField('Sign Up')
+
 
     def validate_username(self, username):
         user = User.query.filter_by(username=username.data).first()
