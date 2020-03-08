@@ -34,11 +34,11 @@
       {% for item in inventory %}
       <div class="col-sm-5">
         
-    <div class="card card-{{ destinationStyler(item.dest_id) }} border-{{ destinationStyler(item.dest_id) }} card-rounded mx-2 my-3 bg-transparent  "
+    <div class="card card-{{ destinationStyler(item.dest_id) }} border-{{ destinationStyler(item.dest_id) }} card-rounded mx-2 my-3 bg-transparent"
     style="border-width: medium;border-radius: 8px;"
     >
     <div class="card-header my-0 border-{{ destinationStyler(item.dest_id) }} " style="border-width: medium;">
-          <div class="card-header text-center text-small m-0 p-0">
+          <div class="card-header text-center text-uppercase m-0 p-0 text-{{ destinationStyler(item.dest_id) }}">
                 {{ shipmentStatusFinder(item.ship_status) }}
         </div>
       </div>
