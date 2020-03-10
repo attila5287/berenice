@@ -15,12 +15,10 @@ class Item(db.Model):
     dest_id = db.Column(db.String(16), nullable=False, default='0')
     ship_status = db.Column(db.String(16), nullable=False,default='0')
     date_posted = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+    
 
     def __repr__(self):
         return f"Item('\n...{self.make}'\n\t '{self.model}' \n\t '{self.year}')"
-
-
-
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -48,4 +46,16 @@ class Post(db.Model):
 
     def __repr__(self):
         return f"Post('{self.title}', '{self.date_posted}')"
+
+
+
+# {{ bodyTypeImgFinder(item.body_type) }}
+# {{item.dest_id }}
+# {{destinationCityFinder(item.dest_id) }}
+# {{ shipmentStatusFinder(item.ship_status) }}
+# DE15R06PKZM52WA89E
+# {{item.make}}
+# {{item.model}}
+# {{item.year}}
+# {{ bodyTypeTextFinder(item.body_type) }}
 

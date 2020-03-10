@@ -25,4 +25,4 @@ Class 	Description 	Example
 .initialism 	Displays the text inside an <abbr> element in a slightly smaller font size 	
 .list-unstyled 	Removes the default list-style and left margin on list items (works on both <ul> and <ol>). This class only applies to immediate children list items (to remove the default list-style from any nested lists, apply this class to any nested lists as well) 	
 .list-inline 	Places all list items on a single line (used together with .list-inline-item on each <li> elements) 	
-.pre-scrollable 	Makes a <pre> element scrollable
+.pre-scrollable 	Makes a <pre> element scrollable  

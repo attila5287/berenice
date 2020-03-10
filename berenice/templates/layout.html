@@ -71,42 +71,17 @@
 								Forms</a>
 						</li>
 						<a class="nav-link" href="/h0me">
-								<i class="fas fa-flag-checkered    "></i>
-								<i class="fas fa-car-side    "></i>
-								Demo
-								&middot;
-								My Cars!</a>
-
-						<li class="nav-item">
-							<a class="nav-link" href="/home">
-								<i class="fas fa-database"></i>
-								Test
+							<i class="fas fa-car    "></i>
+								 Cars
 							</a>
-						</li>
+						<a class="nav-link" href="/h0me/{{current_user.location_id}}">
+							<i class="fas fa-car    "></i>						
+								MyCars
+							</a>
+						<a class="nav-link" href="/h0me/02">
+								Cars02
+							</a>														
 
-						{% else %}
-
-						<li class="nav-item">
-							<a class="nav-link" href="/h0me">
-								<i class="fas fa-flag-checkered    "></i>
-								<i class="fas fa-car-side    "></i>
-								Demo
-								&middot;
-								My Cars!</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="/register">
-								<i class="fas fa-registered    "></i>
-								Register!</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="/home">
-								<i class="fas fa-database"></i>
-								Test</a>
-						</li>
-						{% endif %}
-						{% if current_user.is_authenticated %}
-						<!-- auth usr -->
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true"
 								aria-expanded="false">
@@ -143,24 +118,37 @@
 									<i class="fas fa-car    "></i>
 									Inventory | Display Related</a>
 							</div>
+						</li>						
+
+						{% else %}
+						<li class="nav-item">
+							<a class="nav-link" href="/register">
+								<i class="fas fa-registered    "></i>
+								Register!</a>
+						</li>						
+						<li class="nav-item disabled">
+							<a class="nav-link" href="/h0me">
+								<i class="fas fa-car    "></i>
+								
+								Cars</a>
 						</li>
+
+						<li class="nav-item">
+							<a class="nav-link" href="/about">
+								<i class="fas fa-info    "></i>
+								Info</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="/home">
+								<i class="fas fa-database"></i>
+								Test</a>
+						</li>
+						{% endif %}
+						{% if current_user.is_authenticated %}
+						<!-- auth usr -->
 
 
 						{% else %}
-						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true"
-								aria-expanded="false" title="users only, register first!">
-								<i class="fas fa-user-cog text-info"></i>
-								UsersOnly</a>
-							<div class="dropdown-menu " aria-labelledby="dropdownId">
-								<a class="dropdown-item" href="">
-									<i class="fas fa-hotel    "></i>
-									Forms|Add City</a>
-								<a class="dropdown-item" href="">
-									<i class="fas fa-wrench"></i>
-									Forms|Add Job</a>
-							</div>
-						</li>
 
 						{% endif %}
 
@@ -370,7 +358,7 @@
 		</main>
 
 
-		<footer class="footer mt-2 no-print text-neon">
+		<footer class="footer mt-2 no-print">
 			<div class="row">
 				<div class="col-sm-4">
 					<img class="p-0 float-right"
@@ -379,7 +367,7 @@
 				</div>
 
 				<div class="col-sm-2">
-					<div class="d-flex flex-column justify-content-around text-neon text-center">
+					<div class="d-flex flex-column justify-content-around text-warning text-center">
 						<a>BoilerPlate </a>
 						<a>BluePrint </a>
 						<a>by Attila Turkoz </a>
@@ -388,7 +376,7 @@
 					</div>
 				</div>
 				<div class="col-sm-2">
-					<div class="d-flex flex-column justify-content-between text-neon text-center">
+					<div class="d-flex flex-column justify-content-between text-warning text-center">
 						<a>Python Object Oriented Programming</a>
 						<a>Flask Web FrameWork</a>
 						<a>PostgreSQL Database</a>

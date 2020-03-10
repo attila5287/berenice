@@ -3,86 +3,199 @@
 {% block content %}
 
 {% if inventory==[] %}
-  <div class="card-group p-2">
-
-    {% for item in ItemDemoList %}
-      <div class="col-sm-5">
-        
-    <div class="card card-{{ destinationStyler(item.dest_id) }} border-{{ destinationStyler(item.dest_id) }} card-rounded mx-2 my-3 bg-transparent"
-    style="border-width: medium;border-radius: 8px;"
-    >
-    <div class="card-header my-0 border-{{ destinationStyler(item.dest_id) }} " style="border-width: medium;">
-          <div class="card-header text-center text-uppercase m-0 p-0 text-{{ destinationStyler(item.dest_id) }}">
-                {{ shipmentStatusFinder(item.ship_status) }}
-        </div>
-      </div>
-
-      <div class="card-body pt-1 pb-1">
-        <div class="d-flex justify-content-around">
-          <div class="d-flex justify-content-around flex-sm-column">
-            <img class="img-fluid pt-0 px-2" src="https://raw.githubusercontent.com/attila5287/berenice_img/master/itemB0dyType/{{bodyTypeImgFinder(item.body_type)}}" alt="Card image cap" >
-            <i
-            class="text-{{destinationStyler(item.dest_id)}} float-left text-muted"
-            >To:
-              {{destinationCityFinder(item.dest_id) }}
-            </i>
-          </div>
-            <ul class="list-group list-group list-group-flush text-monospace text-{{destinationStyler(item.dest_id)}} ">
-              <li class="list-group-item">{{item.make}}</li>
-              <li class="list-group-item">{{item.model}}</li>
-              <li class="list-group-item">{{item.year}}</li>
-              <li class="list-group-item">{{ bodyTypeTextFinder(item.body_type) }}</li>
-              
-            </ul>
-          </div>
-        </div>
-      
-      </div>
-
-    </div>
-
-    {% endfor %}
-  </div>
-{% else %}
 
 <div class="row">
-
-      {% for item in inventory %}
-      <div class="col-sm-4">
-        
-    <div class="card card-{{ destinationStyler(item.dest_id) }} border-{{ destinationStyler(item.dest_id) }} card-rounded mx-1 my-3 bg-transparent"
-    style="border-width: medium;border-radius: 8px;"
-    >
-    <div class="card-header my-0 border-{{ destinationStyler(item.dest_id) }} " style="border-width: medium;">
-          <div class="card-header text-center text-uppercase m-0 p-0 text-{{ destinationStyler(item.dest_id) }}">
-                {{ shipmentStatusFinder(item.ship_status) }}
-        </div>
-      </div>
-
-      <div class="card-body pt-1 pb-1">
-        <div class="d-flex justify-content-around">
-          <div class="d-flex justify-content-around flex-sm-column">
-            <img class="img-fluid pt-0 px-2" src="https://raw.githubusercontent.com/attila5287/berenice_img/master/itemBodyType3/{{bodyTypeImgFinder(item.body_type)}}" alt="Card image cap" >
-          </div>
-            <ul class="list-group list-group list-group-flush text-monospace text-{{destinationStyler(item.dest_id)}} ">
-              <li class="list-group-item">{{item.make}}</li>
-              <li class="list-group-item">{{item.model}}</li>
-              <li class="list-group-item">{{item.year}}</li>
-              <li class="list-group-item">{{ bodyTypeTextFinder(item.body_type) }}</li>
-              
-            </ul>
-          </div>
-        </div>
-      
-      </div>
-
+  <div class="col-sm-8 offset-2">
+    <div class="alert alert-{{destinationStyler(current_user.location_id|string)}} alert-dismissible fade show mt-2" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+        <span class="sr-only">Close</span>
+      </button>
+      <strong>Dont get too excited!</strong> 
+      There are no cars shipped to your location, these are demo items! 
     </div>
-    {% endfor %}
-  
-
-
-
+  </div>
 </div>
+
+<div class="row">
+{% for item in ItemDemoList %}
+  <div class="col-sm-6">
+      
+    <div 
+    class="card border-{{destinationStyler(item.dest_id)}} text-{{destinationStyler(item.dest_id)}} text-break text-italic text-right mx-4 my-2"
+    "
+    >
+      <div class="card-header bg-transparent text-center border-{{destinationStyler(item.dest_id)}} text-{{destinationStyler(item.dest_id)}} py-0 my-1">
+        <i class="fas fa-ship"></i>
+        {{ shipmentStatusFinder(item.ship_status) }}
+      </div>
+      <div class="row">
+        <div class="col-xs-3">
+            <img class="card-img-top mx-auto d-block p-4 align-self-center" src="
+          https://raw.githubusercontent.com/attila5287/berenice_img/master/itemB0dyType/{{bodyTypeImgFinder(item.body_type)}}
+          " alt="" style="max-height: 6rem;">
+        </div>
+        <div class="col-xs-3 text-light">
+          <ul class="fa-ul py-1">
+            <li><span class="fa-li">
+              <i class="fa fa-caret-right" aria-hidden="true"></i>
+            </span>
+            {{item.make}}
+            </li>
+            <li><span class="fa-li">
+              <i class="fa fa-caret-right" aria-hidden="true"></i>
+            </span>
+            {{item.model}}
+            </li>
+            <li><span class="fa-li">
+              <i class="fa fa-caret-right" aria-hidden="true"></i>
+            </span>
+            {{item.year}}
+            </li>
+            <li><span class="fa-li">
+              <i class="fa fa-caret-right" aria-hidden="true"></i>
+            </span>
+            {{ bodyTypeTextFinder(item.body_type) }}
+            </li>                        
+        
+        </ul>
+        
+        
+        
+        </div>
+        <div class="col-xs-6">
+          <ul class="fa-ul py-1">
+            <li><span class="fa-li">
+              <i class="fas fa-anchor"></i>
+            </span>
+            {{item.dest_id }}|{{destinationCityFinder(item.dest_id) }} 
+            </li>
+            <li><span class="fa-li">
+              <i class="fa fa-caret-right" aria-hidden="true"></i>
+            </span>
+            Item Info
+            </li>
+            <li><span class="fa-li">
+              <i class="fa fa-caret-right" aria-hidden="true"></i>
+            </span>
+            Item Info
+            </li>
+            <li><span class="fa-li">
+              <i class="fa fa-caret-right" aria-hidden="true"></i>
+            </span>
+            Item Info
+            </li>                
+        </ul>
+        </div>    
+      </div>
+      <div class="card-footer bg-transparent text-center border-{{destinationStyler(item.dest_id)}} text-{{destinationStyler(item.dest_id)}} py-0 text-small my-0">
+        <i class="fa fa-caret-right text-center" aria-hidden="true"></i>
+        DE15R06PKZM52WA89E
+      </div>
+    </div>
+      
+  </div>  
+{% endfor %}
+</div>
+
+alert
+{% else %}
+<div class="row">
+  <div class="col-sm-8 offset-2">
+    <div class="alert alert-{{destinationStyler(current_user.location_id|string)}} alert-dismissible fade show mt-2" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+        <span class="sr-only">Close</span>
+      </button>
+      <strong>Dont get too excited!</strong> 
+      There are no cars shipped to your location, these are demo items! 
+    </div>
+  </div>
+</div>
+
+
+
+<div class="row">
+{% for item in inventory %}
+  <div class="col-sm-6">
+      
+    <div 
+    class="card border-{{destinationStyler(item.dest_id)}} text-{{destinationStyler(item.dest_id)}} text-break text-italic text-right mx-4 my-2"
+    "
+    >
+      <div class="card-header bg-transparent text-center border-{{destinationStyler(item.dest_id)}} text-{{destinationStyler(item.dest_id)}} py-0 my-1">
+        <i class="fas fa-ship"></i>
+        {{ shipmentStatusFinder(item.ship_status) }}
+      </div>
+      <div class="row">
+        <div class="col-xs-3">
+            <img class="card-img-top mx-auto d-block p-4 align-self-center" src="
+          https://raw.githubusercontent.com/attila5287/berenice_img/master/itemB0dyType/{{bodyTypeImgFinder(item.body_type)}}
+          " alt="" style="max-height: 6rem;">
+        </div>
+        <div class="col-xs-3 text-light">
+          <ul class="fa-ul py-1">
+            <li><span class="fa-li">
+              <i class="fa fa-caret-right" aria-hidden="true"></i>
+            </span>
+            {{item.make}}
+            </li>
+            <li><span class="fa-li">
+              <i class="fa fa-caret-right" aria-hidden="true"></i>
+            </span>
+            {{item.model}}
+            </li>
+            <li><span class="fa-li">
+              <i class="fa fa-caret-right" aria-hidden="true"></i>
+            </span>
+            {{item.year}}
+            </li>
+            <li><span class="fa-li">
+              <i class="fa fa-caret-right" aria-hidden="true"></i>
+            </span>
+            {{ bodyTypeTextFinder(item.body_type) }}
+            </li>                        
+        
+        </ul>
+        
+        
+        
+        </div>
+        <div class="col-xs-6">
+          <ul class="fa-ul py-1">
+            <li><span class="fa-li">
+              <i class="fas fa-anchor"></i>
+            </span>
+            {{item.dest_id }}|{{destinationCityFinder(item.dest_id) }} 
+            </li>
+            <li><span class="fa-li">
+              <i class="fa fa-caret-right" aria-hidden="true"></i>
+            </span>
+            Item Info
+            </li>
+            <li><span class="fa-li">
+              <i class="fa fa-caret-right" aria-hidden="true"></i>
+            </span>
+            Item Info
+            </li>
+            <li><span class="fa-li">
+              <i class="fa fa-caret-right" aria-hidden="true"></i>
+            </span>
+            Item Info
+            </li>                
+        </ul>
+        </div>    
+      </div>
+      <div class="card-footer bg-transparent text-center border-{{destinationStyler(item.dest_id)}} text-{{destinationStyler(item.dest_id)}} py-0 text-small my-0">
+        <i class="fa fa-caret-right text-center" aria-hidden="true"></i>
+        DE15R06PKZM52WA89E
+      </div>
+    </div>
+      
+  </div>  
+{% endfor %}
+</div>
+
 
 {% endif %}
 
