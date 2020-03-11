@@ -144,12 +144,18 @@
 								Test</a>
 						</li>
 						{% endif %}
-						{% if current_user.is_authenticated %}
-						<!-- auth usr -->
 
+						{% if current_user.is_shipper == '1' %}
+						<!-- auth usr -->
+						<li class="nav-item">
+							<a class="nav-link" href="/h0me">
+								<i class="fas fa-eye text-danger"></i>
+								OnlyShipperCanSeeThis
+							</a>
+						</li>
 
 						{% else %}
-
+						...
 						{% endif %}
 
 						<li class="nav-item">

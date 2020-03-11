@@ -10,7 +10,8 @@ CREATE TABLE "user" (
 		"email"	VARCHAR(120) NOT NULL UNIQUE,
 		"image_file"	VARCHAR(255) NOT NULL,
 		"password"	VARCHAR(255) NOT NULL,
-		"location_id"	SMALLINT
+		"is_shipper"	VARCHAR(8),
+		"location_id"	SMALLINT 
 	);
 
 

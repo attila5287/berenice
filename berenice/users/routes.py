@@ -21,6 +21,7 @@ def regist3r():
     user = User(
         username=request.form['username'],
         email=request.form['email'],
+        is_shipper = request.form['is_shipper'],
         location_id=request.form['location_id'],
         password=hashed_password
     )
@@ -38,7 +39,7 @@ def register():
     form = RegistrationForm()
     if form.validate_on_submit():
         hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
-        user = User(username=form.username.data, email=form.email.data, password=hashed_password)
+        user = User(username=form.username.data, email=form.email.data, password=hashed_password, is_shipper=form.is_shipper.data, location_id=form.location_id.data)
         db.session.add(user)
         db.session.commit()
         flash('Your account has been created! You are now able to log in', 'success')

@@ -14,11 +14,13 @@ class RegistrationForm(FlaskForm):
     password = PasswordField('Password', validators=[DataRequired()])
     confirm_password = PasswordField('Confirm Password',
                                      validators=[DataRequired(), EqualTo('password')])
+
+    is_shipper = SelectField(choices=[('0', 'n'), ('1', 'y')], default='0')
+
     location_id = SelectField(
-        choices=[('0', 'Alabama'),('1', 'Baltimore'),
-        ('2', 'California'), ('3', 'Delaware'), ('4', 'Exeter')]
+        choices=[('99', 'Shipper'), ('0', 'Alabama'), ('1', 'Baltimore'),
+                 ('2', 'California'), ('3', 'Delaware'), ('4', 'Exeter')], default='Alabama'
     )
-    submit = SubmitField('Sign Up')
 
 
     def validate_username(self, username):
