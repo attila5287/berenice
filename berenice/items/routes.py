@@ -10,11 +10,32 @@ from berenice.models import (
     User, Item
 )
 from berenice.items.forms import (
-    ItemForm, ItemDemo
+    ItemForm, ItemDemo, ShipperDisplayForm
 )
-
-
 items = Blueprint('items', __name__)
+
+
+@items.route("/shipper/home", methods=['GET', 'POST'])
+@login_required
+def shipper_home():
+    pass
+    form = ShipperDisplayForm()
+    inventory = Item.query.all()
+    try:
+        _ = [item for item in inventory]
+    except:
+        inventory = []
+    if request.method == 'POST':
+        pass
+        inventory = Item.query.filter_by(
+            dest_id=str(request.form["destination"])).all()
+        inventory = [
+            item for item in inventory
+        ]
+        return render_template('shipper_home.html', inventory=inventory, title='ShipperDispLoc')
+
+    return render_template('shipper_home.html',form = form,  inventory=inventory, title='ShipperHome')
+
 
 
 @items.route("/h0me/<int:my_location_id>")
@@ -30,9 +51,8 @@ def displayMyCarsOnly(my_location_id):
 
     return render_template('h0me.html', inventory=inventory, title='My Cars')
 
- 
-
 @items.route("/h0me")
+@login_required
 def h0me():
     pass
     inventory = Item.query.all()
@@ -42,6 +62,7 @@ def h0me():
     except:
         inventory = []
     return render_template('h0me.html', inventory=inventory, title='My Cars')
+
 
 
 @items.route("/item/new", methods=['GET', 'POST'])
@@ -98,7 +119,7 @@ def inject_ItemDemoList():
 @items.context_processor
 def inject_destStyleDict():
     pass
-    def destinationStyler(item_dest_index):
+    def destStyler(item_dest_index):
         pass
         destStyleDict = {
             '0': 'danger',
@@ -106,16 +127,20 @@ def inject_destStyleDict():
             '2': 'success',
             '3': 'info',
             '4': 'primary',
+            '99': 'secondary',
         }
         return destStyleDict.get(item_dest_index, 'secondary')
         
-    return dict(destinationStyler=destinationStyler)
+    return dict(destStyler=destStyler)
+
+
 
 
 @items.context_processor
 def inject_bodyTypeImgDict():
     pass
-    def bodyTypeImgFinder(item_bodyType_index):
+
+    def imageFinder(item_bodyType_index):
         pass
         bodyTypeImgDict = {
             '0': '00.png',
@@ -126,13 +151,13 @@ def inject_bodyTypeImgDict():
         }
         return bodyTypeImgDict.get(item_bodyType_index,'00.png')
 
-    return dict(bodyTypeImgFinder=bodyTypeImgFinder)
+    return dict(imageFinder=imageFinder)
 
 
 @items.context_processor
 def inject_bodyTypeTextDict():
     pass
-    def bodyTypeTextFinder(item_bodyType_id):
+    def typeFinder(item_bodyType_id):
         pass
         bodyTypeTextDict = {
         '0': 'Sedan',
@@ -143,13 +168,13 @@ def inject_bodyTypeTextDict():
         }
         return bodyTypeTextDict.get(item_bodyType_id, 'UnknownBodyType')
 
-    return dict(bodyTypeTextFinder=bodyTypeTextFinder)
+    return dict(typeFinder=typeFinder)
 
 
 @items.context_processor
 def inject_shipStatMsgDict():
     pass
-    def shipmentStatusFinder(item_ship_status):
+    def statusFinder(item_ship_status):
         pass
         shipStatMsgDict = {
             '0': 'not yet shipped',
@@ -160,13 +185,13 @@ def inject_shipStatMsgDict():
         }
         return shipStatMsgDict.get(item_ship_status, 'UnknownShipmentStatus')
     
-    return dict(shipmentStatusFinder=shipmentStatusFinder)
-
+    return dict(statusFinder=statusFinder)
+ 
 
 @items.context_processor
 def inject_destCityDict():
     pass
-    def destinationCityFinder(item_dest_id):
+    def cityFinder(item_dest_id):
         pass
         destCityNameDict = {
             '0': 'Alabama',
@@ -176,5 +201,5 @@ def inject_destCityDict():
             '4': 'Exeter',
         }
         return destCityNameDict.get(item_dest_id, 'UnknownDestinationCity')
-    return dict(destinationCityFinder=destinationCityFinder)
+    return dict(cityFinder=cityFinder)
 

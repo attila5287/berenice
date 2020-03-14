@@ -46,3 +46,35 @@ class ItemDemo():
     def __repr__(self):
         return f"ItemDemo('\n...{self.make}'\n\t '{self.model}' \n\t '{self.year}')"
 
+
+class ShipperDisplayForm(FlaskForm):
+    pass
+    make = StringField('make', validators=[DataRequired()])
+
+    model = StringField('model', validators=[
+                        DataRequired()])
+
+    year = StringField('year', validators=[DataRequired()])
+
+    body_type = SelectField(
+        choices=[
+            ('0', 'Sedan'), ('1', 'Compact'),
+            ('2', 'Coupe'), ('3', 'Pickup'),
+            ('4', 'SUV')
+        ])
+        
+    destination = SelectField(
+        choices=[('0', 'Alabama'), ('1', 'Baltimore'),
+                 ('2', 'California'), ('3', 'Delaware'), ('4', 'Exeter')])
+
+    ship_status = SelectField(
+        choices=[
+            ('0', 'not yet shipped'),
+            ('1', 'receive next week'),
+            ('2', 'receive following week'),
+            ('3', 'receive within a month'),
+            ('4', 'receive next month'),
+        ]
+    )
+
+

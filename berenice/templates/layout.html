@@ -59,49 +59,7 @@
 					<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
 
 						{% if current_user.is_authenticated %}
-						<li class="nav-item">
-							<a class="nav-link" href="{{url_for('main.about')}}">
-								<i class="fas fa-info    "></i>
-								Info</a>
-						</li>
 
-						<li class="nav-item">
-							<a class="nav-link" href="/item/new">
-								<i class="fas fa-question    "></i>
-								Forms</a>
-						</li>
-						<a class="nav-link" href="/h0me">
-							<i class="fas fa-car    "></i>
-								 Cars
-							</a>
-						<a class="nav-link" href="/h0me/{{current_user.location_id}}">
-							<i class="fas fa-car    "></i>						
-								MyCars
-							</a>
-						<a class="nav-link" href="/h0me/02">
-								Cars02
-							</a>														
-
-						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true"
-								aria-expanded="false">
-								<i class="fas fa-ship"></i>
-
-								ShipperOpts</a>
-							<div class="dropdown-menu " aria-labelledby="dropdownId">
-								<a class="dropdown-item" href="">
-									<i class="fas fa-edit    "></i>
-									Ship | Data Entry</a>
-								<a class="dropdown-item" href="">
-									<i class="fas fa-sitemap"></i>
-									Inventory | Display All</a>
-								<a class="dropdown-item" 
-								href="{{ url_for('posts.new_post') }}"
-								>
-									<i class="fas fa-envelope    "></i>
-									Post | Announcement</a>									
-							</div>
-						</li>
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true"
 								aria-expanded="false">
@@ -114,54 +72,66 @@
 								">
 									<i class="fas fa-envelope    "></i>
 									Post | Create a post</a>
-								<a class="dropdown-item" href="">
+								<a class="dropdown-item" href="h0me/{{current_user.location_id }}">
 									<i class="fas fa-car    "></i>
 									Inventory | Display Related</a>
 							</div>
-						</li>						
+						</li>
 
 						{% else %}
+
 						<li class="nav-item">
 							<a class="nav-link" href="/register">
 								<i class="fas fa-registered    "></i>
 								Register!</a>
-						</li>						
-						<li class="nav-item disabled">
-							<a class="nav-link" href="/h0me">
-								<i class="fas fa-car    "></i>
-								
-								Cars</a>
 						</li>
 
 						<li class="nav-item">
-							<a class="nav-link" href="/about">
+							<a class="nav-link" href="/login">
+								<i class="fas fa-registered    "></i>
+								Login!</a>
+						</li>												
+
+						{% endif %}
+
+						{% if current_user.is_shipper == '1' %}
+						
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true"
+								aria-expanded="false">
+								<i class="fas fa-ship"></i>
+								ShipperMenu
+							</a>
+							<div class="dropdown-menu " aria-labelledby="dropdownId">
+								<a class="dropdown-item" href="{{url_for('items.new_item') }}">
+									<i class="fas fa-shipping-fast text-neon"></i>
+									NewItem &middot; DataEntry</a>
+								<a class="dropdown-item" href="{{url_for('items.shipper_home') }}">
+									<i class="fas fa-eye text-neon"></i>
+									Shipper &middot; Home</a>
+								<a class="dropdown-item" href="{{url_for('items.h0me')}}">
+									<i class="fas fa-eye"></i>
+									Inventory &middot; DisplayAll</a>
+								<a class="dropdown-item" 
+								href="{{ url_for('posts.new_post') }}"
+								><i class="fas fa-envelope"></i>
+									PostMsg &middot; OnBoard</a>
+							</div>
+						</li>
+						{% else %}
+						<i class="text-hide">
+							No Shipper Access
+						</i>
+						{% endif %}
+
+						<li class="nav-item">
+							<a class="nav-link" href="{{url_for('main.about')}}">
 								<i class="fas fa-info    "></i>
 								Info</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="/home">
-								<i class="fas fa-database"></i>
-								Test</a>
-						</li>
-						{% endif %}
-
-						{% if current_user.is_shipper == '1' %}
-						<!-- auth usr -->
-						<li class="nav-item">
-							<a class="nav-link" href="/h0me">
-								<i class="fas fa-eye text-danger"></i>
-								OnlyShipperCanSeeThis
-							</a>
-						</li>
-
-						{% else %}
-						...
-						{% endif %}
-
-						<li class="nav-item">
 							<a class="nav-link" href="{{ url_for('main.aboutdev') }}">
-								<i class="fas fa-pen    "></i>
-								<i class="fas fa-signature    "></i>
+								<i class="fas fa-signature"></i>
 								abt dev</a>
 						</li>
 					</ul>
@@ -187,7 +157,7 @@
 					&RightArrowLeftArrow;
 					<i class="fas fa-database"></i> stores hash pw into db
 				</div>
-
+				
 				<p class="text-primary text-center mt-0 mb-0 p-0">
 					<i class="fas  fa-fw fa-arrow-right mt-0"></i>
 				</p>
@@ -206,7 +176,7 @@
 			<div class="d-flex flex-row-reverse justify-content-around align-items-center  mt-0 pt-2 px-2 mr-2">
 				<p class="text-primary text-center mt-0 mb-0 mx-2 p-0">
 					<i class="fas fa-level-down-alt  fa-rotate-90 mt-0"></i>
-				</p>
+ 				</p>
 				<div class="alert alert-primary text-primary text-center mb-1 p-2" role="alert">
 					<i class="fas fa-clipboard-check    "></i> user updates items/edits or delete records &RightArrowLeftArrow;
 					<i class="fas fa-database    "></i> db stores or removes records
@@ -448,10 +418,15 @@
 			color: #428bca;
 			text-decoration: none;
 		}
+		.bg-neon {
+			background-color: greenyellow;
+		}
+		.border-neon {
+			border-color: greenyellow;
+		}
 		.text-neon {
 			color: greenyellow;
-		}
-
+		}		
 		.bg-fifth {
 			background-color: orchid;
 		}

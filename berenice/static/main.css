@@ -34,36 +34,6 @@ body {
   height: 32rem;
 }
 
-/* MARKETING CONTENT
--------------------------------------------------- */
-
-/* Center align the text within the three columns below the carousel */
-.marketing .col-lg-4 {
-  margin-bottom: 1.5rem;
-  text-align: center;
-}
-.marketing h2 {
-  font-weight: 400;
-}
-.marketing .col-lg-4 p {
-  margin-right: 0.75rem;
-  margin-left: 0.75rem;
-}
-
-/* Featurettes
-------------------------- */
-
-.featurette-divider {
-  margin: 5rem 0; /* Space out the Bootstrap <hr> more */
-}
-
-/* Thin out the marketing headings */
-.featurette-heading {
-  font-weight: 300;
-  line-height: 1;
-  letter-spacing: -0.05rem;
-}
-
 /* RESPONSIVE CSS
 -------------------------------------------------- */
 
@@ -75,14 +45,6 @@ body {
     line-height: 1.4;
   }
 
-  .featurette-heading {
-    font-size: 50px;
-  }
-
-@media (min-width: 62em) {
-  .featurette-heading {
-    margin-top: 7rem;
-  }
 }
 
 
@@ -101,9 +63,6 @@ body {
 
 .list-group-hover li:hover i {
   background-color: rgba(243, 200, 100, 0.772);
-}
-.bg-steel {
-  background-color: #f8995f;
 }
 .site-header .navbar-nav .nav-link {
 }
