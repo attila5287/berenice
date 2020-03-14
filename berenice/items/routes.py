@@ -32,9 +32,19 @@ def shipper_home():
         inventory = [
             item for item in inventory
         ]
-        return render_template('shipper_home.html', inventory=inventory, title='ShipperDispLoc')
 
-    return render_template('shipper_home.html',form = form,  inventory=inventory, title='ShipperHome')
+        return render_template(
+            'shipper_home.html',
+            form=form,
+            inventory=inventory,
+            title='ShipperDispLoc'
+            )
+    return render_template(
+        'shipper_home.html',
+        form=form,
+        inventory=inventory,
+        title='ShipperHome'
+        )
 
 
 

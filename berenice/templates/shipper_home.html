@@ -6,24 +6,22 @@
     <img 
     
     src="https://raw.githubusercontent.com/attila5287/berenice_img/master/ship_container_wake.png" 
-    class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}"
+    class="img-fluid p-4"
     alt="left sidebar top img transparent bg shipper lister"
+    style="width: 100%;"
     >
     <form method="POST" action="">
       <div class="row">
           {% for field in form %}
-
           <div class="col-md-6 text-center">
               <i class="fas fa-search-plus fa-rotate-90"></i>
               <label 
-              class="mb-1 text-monospace"
-              for="" > {{ field.label}} </label>
-              {{field(class="form-control form-control-lg border-success mx-auto px-4 box-shadow text-center", style="border-radius: 1rem;border-width:medium;text-size:5px;width:90%",placeholder='Add Filter?') }}
+              class="mb-1 mt-3 text-monospace"
+              for="" > {{ field.label}} 
+              </label>
+
+              {{field(class="form-control form-control-lg border-success mx-auto px-1 box-shadow text-center", style="border-radius: 1rem;border-width:medium;text-size:5px;width:95%",placeholder='Add Filter?') }}
           </div>
-          
-
-          
-
           {% endfor %}
 
           <button

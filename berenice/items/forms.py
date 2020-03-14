@@ -35,6 +35,7 @@ class ItemDemo():
 
     def __init__(self, make='', model='', year='', body_type='', dest_id='', ship_status=''):
         pass
+
         self.make = make
         self.model = model
         self.year = year
@@ -49,13 +50,10 @@ class ItemDemo():
 
 class ShipperDisplayForm(FlaskForm):
     pass
-    make = StringField('make', validators=[DataRequired()])
 
-    model = StringField('model', validators=[
-                        DataRequired()])
-
-    year = StringField('year', validators=[DataRequired()])
-
+    make = StringField('make')
+    model = StringField('model')
+    year = StringField('year')
     body_type = SelectField(
         choices=[
             ('0', 'Sedan'), ('1', 'Compact'),
@@ -76,5 +74,3 @@ class ShipperDisplayForm(FlaskForm):
             ('4', 'receive next month'),
         ]
     )
-
-
