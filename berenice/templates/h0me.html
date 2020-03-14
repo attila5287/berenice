@@ -71,6 +71,7 @@
         {{ statusFinder(item.ship_status) }}
       </div>
       <div class="row">
+<<<<<<< HEAD
 
         <div class="col-sm-4">
             <img
@@ -80,6 +81,37 @@
           " alt="" style="max-height: 6rem;"
           >
         
+=======
+        <div class="col-xs-3">
+            <img class="card-img-top mx-auto d-block p-4 align-self-center" src="
+          https://raw.githubusercontent.com/attila5287/berenice_img/master/itemB0dyType/{{bodyTypeImgFinder(item.body_type)}}
+          " alt="" style="max-height: 6rem;">
+        </div>
+        <div class="col-xs-3 text-light">
+          <ul class="fa-ul py-1">
+            <li><span class="fa-li">
+              <i class="fa fa-caret-right" aria-hidden="true"></i>
+            </span>
+            {{item.make}}
+            </li>
+            <li><span class="fa-li">
+              <i class="fa fa-caret-right" aria-hidden="true"></i>
+            </span>
+            {{item.model}}
+            </li>
+            <li><span class="fa-li">
+              <i class="fa fa-caret-right" aria-hidden="true"></i>
+            </span>
+            {{item.year}}
+            </li>
+            <li><span class="fa-li">
+              <i class="fa fa-caret-right" aria-hidden="true"></i>
+            </span>
+            {{ bodyTypeTextFinder(item.body_type) }}
+            </li>                        
+        
+        </ul>
+>>>>>>> 20526c63e627255b747dd7d17a99b3cb06d6776b
         </div>
 
         <div class="col-sm-4">
