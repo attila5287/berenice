@@ -97,18 +97,27 @@
 						{% if current_user.is_shipper == '1' %}
 						
 						<li class="nav-item dropdown">
+
+
 							<a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true"
 								aria-expanded="false">
 								<i class="fas fa-ship"></i>
 								ShipperMenu
 							</a>
+
 							<div class="dropdown-menu " aria-labelledby="dropdownId">
-								<a class="dropdown-item" href="{{url_for('items.new_item') }}">
-									<i class="fas fa-shipping-fast text-neon"></i>
-									NewItem &middot; DataEntry</a>
+								<a class="dropdown-item" href="{{url_for('dash_app.shipper_home') }}">
+									<i class="fas fa-chart-line text-neon"></i>
+									Dash &middot; ShipperHome</a>
+
 								<a class="dropdown-item" href="{{url_for('items.shipper_home') }}">
 									<i class="fas fa-eye text-neon"></i>
-									Shipper &middot; Home</a>
+									Inventory &middot; ShipperHome</a>
+
+								<a class="dropdown-item" href="{{url_for('items.new_item') }}">
+									<i class="fas fa-shipping-fast text-neon"></i>
+									NewItem &middot; ShipperForms</a>
+
 								<a class="dropdown-item" href="{{url_for('items.h0me')}}">
 									<i class="fas fa-eye"></i>
 									Inventory &middot; DisplayAll</a>
@@ -116,6 +125,7 @@
 								href="{{ url_for('posts.new_post') }}"
 								><i class="fas fa-envelope"></i>
 									PostMsg &middot; OnBoard</a>
+							
 							</div>
 						</li>
 						{% else %}
@@ -440,6 +450,5 @@
 	</body>
 
 </html>
-<div class="d-flex flex-column justify-content-around text-info text-center">
 
 	          

@@ -1,0 +1,62 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<div class="row">
+  <div class="col-md-4">
+
+    <img 
+    
+    src="https://raw.githubusercontent.com/attila5287/berenice_img/master/ship_container_wake.png" 
+    class="img-fluid p-2"
+    alt="left sidebar top img transparent bg shipper lister"
+    style="width: 100%;"
+    >
+    <div class="d-flex justify-content-end">
+    <img 
+    class="img-fluid mx-auto d-block mt-5 p-2"
+    src="https://raw.githubusercontent.com/attila5287/berenice_img/master/container_truck.png" 
+    alt="left sidebar bottom img" width="50%"
+    >
+    <img 
+    class="img-fluid mx-auto d-block mt-5 p-2"
+    src="https://raw.githubusercontent.com/attila5287/berenice_img/master/ship_container.png" 
+    alt="left sidebar bottom img" width="50%"
+    >    
+    </div>
+        <div class="d-flex justify-content-end">
+    <img 
+    class="img-fluid mx-auto d-block mt-5 p-2"
+    src="https://raw.githubusercontent.com/attila5287/berenice_img/master/container_forklift.png" 
+    alt="left sidebar bottom img" width="50%"
+    >
+    <img 
+    class="img-fluid mx-auto d-block mt-5 p-2"
+    src="https://raw.githubusercontent.com/attila5287/berenice_img/master/container_roro_car.png" 
+    alt="left sidebar bottom img" width="50%"
+    >    
+    </div>
+  </div>
+
+  <div class="col-md-8">
+    <div class="row">
+
+  {% for item in inventory %}
+  <div class="col-md-10 offset-md-1">
+    <p class="text-success">
+      test dashboard implement <br>
+      using plotly with js <br>
+      dash might slow app down <br>
+    </p>
+    <hr>
+  </div>  
+  {% endfor %}      
+      
+    </div>
+  </div>
+</div>
+
+
+
+
+{% endblock content %}
